@@ -1,0 +1,17 @@
+name: keep-bridge-space-awake
+
+on:
+  # Runs the job on every push *and* on the schedule below.
+  schedule:
+    - cron:  '*/30 * * * *'       # every 25 minutes, UTC
+  workflow_dispatch:              # adds a "Run workflow" button in the UI
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2            # safety: fail fast if curl hangs
+    steps:
+      - name: Curl the Space
+        run: |
+          echo "Pinging BRIDGE leaderboard Space at $(date -u)."
+          curl -fsSL -o /dev/null https://ylab-open-bridge-medical-leaderboard.hf.space/
