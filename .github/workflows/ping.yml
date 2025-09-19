@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2            # safety: fail fast if curl hangs
     steps:
-      - name: Curl the Space
-        run: |
-          echo "Pinging BRIDGE leaderboard Space at $(date -u)."
-          curl -fsSL -o /dev/null https://ylab-open-bridge-medical-leaderboard.hf.space/
+      - name: Curl Medical Leaderboard
+        run: curl -fsSL -o /dev/null https://ylab-open-bridge-medical-leaderboard.hf.space/
+
+      - name: Curl BRIDGE-OPEN Leaderboard
+        run: curl -fsSL -o /dev/null https://ylab-open-bridge-open-leaderboard.hf.space/
